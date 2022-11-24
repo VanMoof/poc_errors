@@ -1,0 +1,38 @@
+# Copyright (c) 2022 VanMoof B.V. All Rights Reserved. VanMoof Proprietary and Confidential
+
+# Error codes available to be reported on the errors MQTT topic
+# To use in services, #include <error.h> (part of main/common)
+
+# Services APIs aren't tracked, neither are BLE/modem. LPC devices use the registry. This unfortunately means there are
+# multiple ways to specify errors. This list is meant as the "primary" index. To have LPC devices report errors
+# (or "states") directly via the monitor service, match the datatypes: state_code enum indexing (1-indexed in powers of
+# two) with below, then use the API in heartbeat_service.h. For services, indexing can be linear.
+# Note for LPC, there is also the `state/{device}/{error_string} "true"` MQTT reporting, but due to BLE topics not
+# supporting wildcards this is considered legacy.
+
+# Generic LPC errors (in heartbeat.yml)
+imx8_bridge     INIT_FAILED         4294967296
+power_pedal     INIT_FAILED         4294967296
+power_control   INIT_FAILED         4294967296
+user_ecu        INIT_FAILED         4294967296
+elock           INIT_FAILED         4294967296
+eshifter        INIT_FAILED         4294967296
+rearlight       INIT_FAILED         4294967296
+frontlight      INIT_FAILED         4294967296
+
+# Note eshifter is short on flash-space so does not actually report these right now
+eshifter        FACTORY_MODE        1
+eshifter        MOTOR_STUCK         2
+eshifter        PENDING_CALIBRATION 4
+eshifter        CALIBRATING         8
+
+# Only for test coverage (not production)
+unittest        A                   1
+unittest        B                   2
+unittest        C                   3
+unittest_alt    A                   1
+unittest_alt    B                   4294967297
+
+# Services
+ux              bellTestEvent       123
+ux              startupTimeout      1
