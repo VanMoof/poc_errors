@@ -24,7 +24,7 @@ frontlight      INIT_FAILED         4294967296
 eshifter        FACTORY_MODE        1
 eshifter        MOTOR_STUCK         2
 eshifter        PENDING_CALIBRATION 4
-eshifter        CALIBRATING         8
+eshifter        CALIBRATING         8 
 
 # Only for test coverage (not production)
 unittest        A                   1
@@ -36,3 +36,4 @@ unittest_alt    B                   4294967297
 # Services
 ux              bellTestEvent       123
 ux              startupTimeout      1
+
